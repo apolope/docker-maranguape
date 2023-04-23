@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  app:
+    image: jc21/nginx-proxy-manager:latest
+    ports:
+      - 80:80
+      - 81:81
+      - 443:443
+    expose:
+      - 80
+      - 443
+    environment:
+      DB_MYSQL_HOST: "192.168.1.241"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "proxy"
+      DB_MYSQL_PASSWORD: "Pr0x1@@"
+      DB_MYSQL_NAME: "proxy"
+    volumes:
+      - /mnt/data1/servers/nginx-proxy/data:/data
+      - /mnt/data1/servers/nginx-proxy/letsencrypt:/etc/letsencrypt

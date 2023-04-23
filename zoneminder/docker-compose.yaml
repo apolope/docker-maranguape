@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  zoneminder:
+    image: dlandon/zoneminder.machine.learning
+    container_name: zoneminder
+    privileged: true
+    shm_size: 8G
+    hostname: zoneminder
+    ports:
+      - "8012:80"
+      - "9000:9000"
+    expose:
+      - 8012
+      - 9000
+    volumes:
+      - /mnt/data1/servers/zoneminder:/config:rw
+      - /mnt/data1/servers/zoneminder/data:/var/cache/zoneminder:rw
+      - /var/lib/docker/docker-md0/zoneminder/data:/var/cache/zoneminder:rw
+    environment:
+      - TZ=America/Recife
+      - PUID=99
+      - PGID=100
+      - INSTALL_FACE=1
+      - MULTI_PORT_START=0
+      - MULTI_PORT_END=0
+    restart: always
+    network_mode: bridge

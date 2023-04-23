@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  db:
+    image: mariadb
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: 3110apolo
+    volumes:
+      - /mnt/data1/servers/mariadb:/var/lib/mysql
+    ports:
+      - 3306:3306
